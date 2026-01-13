@@ -25,7 +25,7 @@ jobs:
           npm run build --if-present
   test:
     runs-on: ubuntu-latest
-    needs: build
+    # needs: build
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -40,7 +40,7 @@ jobs:
           npm run test
   last:
     runs-on: ubuntu-latest
-    needs: test
+    needs: [build, test]
     steps:
       - name: Bye
         run: echo "Bye!"
