@@ -41,6 +41,7 @@ jobs:
   last:
     runs-on: ubuntu-latest
     needs: [build, test]
+    if: ${{ always() }}
     steps:
       - name: Bye
         run: echo "Bye!"
