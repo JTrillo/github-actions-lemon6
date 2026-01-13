@@ -10,10 +10,11 @@ on:
 
 jobs:
   build-test:
-    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [16, 18, 20]
+        os: [ubuntu-20.04, ubuntu-22.04]
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Checkout
