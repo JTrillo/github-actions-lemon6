@@ -11,7 +11,7 @@ on:
         type: string
 
 jobs:
-  build:
+  build_reusable:
     runs-on: ubuntu-latest
 
     steps:
