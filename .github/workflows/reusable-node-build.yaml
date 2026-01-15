@@ -1,0 +1,30 @@
+name: Reusable Node Build
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        required: true
+        type: number
+      working-directory:
+        required: true
+        type: string
+
+jobs:
+  build_reusable:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup Node.js version
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: 'npm'
+          cache-dependency-path: ${{ inputs.working-directory }}/package-lock.json
+      - name: Build
+        working-directory: ${{ inputs.working-directory }}
+        run: |
+          npm ci
+          npm run build --if-present
