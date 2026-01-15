@@ -2,6 +2,9 @@ name: CD - Build and push docker image
 
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [ main ]
+    paths: [ 'hangman-api/**' ]
 
 jobs:
   delivery:
