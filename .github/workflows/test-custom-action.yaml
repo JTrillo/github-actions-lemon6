@@ -1,0 +1,14 @@
+name: Workflow to test the custom action
+
+on:
+  workflow_dispatch:
+
+jobs:
+  get_commodity_price:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get commodity price
+        uses: jtrillo/get-commodity-price-action@v1
+        with:
+          commodity: 'silver'
