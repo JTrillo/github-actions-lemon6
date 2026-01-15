@@ -63,7 +63,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 20
-      - name: Create database relationships
+      - name: Running integration test
         working-directory: ./hangman-api
         env:
           DATABASE_PORT: 5432
@@ -76,3 +76,4 @@ jobs:
         run: |
           npm ci
           npx knex migrate:latest --env development
+          npm run test:integration
