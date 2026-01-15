@@ -18,3 +18,12 @@ jobs:
         with:
           username: jtrillo
           password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./hangman-api
+          push: true
+          tags: jtrillo/hangman-api-lemon6-gh:latest
+          file: ./hangman-api/Dockerfile
