@@ -9,6 +9,6 @@ jobs:
 
     steps:
       - name: Get commodity price
-        uses: jtrillo/get-commodity-price-action@v1.0.2
+        uses: jtrillo/get-commodity-price-action@v1.0.3
         with:
           commodity: 'silver'
