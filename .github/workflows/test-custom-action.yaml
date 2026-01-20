@@ -6,9 +6,14 @@ on:
 jobs:
   get_commodity_price:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        commodity: ["gold", "SILVER"]
+        currency: ["usD", "EUR", "GBP"]
 
     steps:
       - name: Get commodity price
-        uses: jtrillo/get-commodity-price-action@v1
+        uses: jtrillo/get-commodity-price-action@v1.1.0
         with:
-          commodity: 'silver'
+          commodity: ${{ matrix.commodity }}
+          currency: ${{ matrix.currency }}
