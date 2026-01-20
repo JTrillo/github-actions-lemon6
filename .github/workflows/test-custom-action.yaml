@@ -9,11 +9,14 @@ jobs:
     strategy:
       matrix:
         commodity: ["gold", "SILVER"]
-        currency: ["usD", "EUR", "GBP"]
+        currency: ["usD", "EUR"]
 
     steps:
       - name: Get commodity price
+        id: commodity_price
         uses: jtrillo/get-commodity-price-action@v1.1.0
         with:
           commodity: ${{ matrix.commodity }}
           currency: ${{ matrix.currency }}
+      - name: Get the output price
+        run: echo "Price per once is ${{ steps.commodity_price.outputs.price }} ${{ matrix.currency}}"
